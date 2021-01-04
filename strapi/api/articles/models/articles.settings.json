@@ -12,49 +12,25 @@
   },
   "attributes": {
     "title": {
-      "type": "string"
-    },
-    "excerpt": {
-      "type": "richtext"
+      "type": "string",
+      "required": true
     },
     "published": {
-      "type": "date"
+      "type": "date",
+      "required": true
     },
     "thumbnail": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
-        "images",
-        "files",
-        "videos"
+        "images"
       ],
       "plugin": "upload",
-      "required": false
+      "required": true
     },
     "content": {
-      "type": "richtext"
-    },
-    "tags": {
-      "type": "enumeration",
-      "enum": [
-        "news",
-        "stories",
-        "teascience",
-        "teaware",
-        "health",
-        "teatypes"
-      ]
-    },
-    "images": {
-      "collection": "file",
-      "via": "related",
-      "allowedTypes": [
-        "files",
-        "images",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": false
+      "type": "richtext",
+      "required": true
     },
     "author": {
       "plugin": "users-permissions",
@@ -63,14 +39,19 @@
     },
     "slug": {
       "type": "uid",
-      "targetField": "title"
+      "targetField": "title",
+      "required": true
     },
-    "article_status": {
-      "type": "enumeration",
-      "enum": [
-        "live",
-        "draft"
-      ]
+    "tags": {
+      "type": "component",
+      "repeatable": true,
+      "component": "tags.tag",
+      "min": 1,
+      "required": true
+    },
+    "excerpt": {
+      "type": "text",
+      "required": true
     }
   }
 }
