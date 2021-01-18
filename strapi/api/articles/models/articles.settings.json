@@ -42,16 +42,12 @@
       "targetField": "title",
       "required": true
     },
-    "tags": {
-      "type": "component",
-      "repeatable": true,
-      "component": "tags.tag",
-      "min": 1,
-      "required": true
-    },
     "excerpt": {
       "type": "text",
       "required": true
+    },
+    "categories": {
+      "collection": "category"
     }
   }
 }
