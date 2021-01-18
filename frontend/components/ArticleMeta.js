@@ -5,11 +5,13 @@ import { theme } from "../utils/theme-styles"
 
 const MetaWrapper = styled.div`
     text-align: center;
-    color: ${theme.textLighter};
-    font-size: 0.8rem;
+    p {
+      color: ${theme.textLighter}
+    }
 
     h1 {
       font-weight: 300;
+      margin: calc(2 * ${theme.gap}) 0;
     }
 `
 

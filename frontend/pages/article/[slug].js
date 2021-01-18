@@ -9,10 +9,12 @@ import ReactMarkdown from "react-markdown"
 import { device } from "../../lib/media"
 import ArticleMeta from '../../components/ArticleMeta'
 import styled from 'styled-components'
+import Image from '../../components/Image'
 
 import { theme } from "../../utils/theme-styles"
 
 import {md } from '../../utils/markdownParser'
+import { serifFont } from "../../utils/fonts"
 
 
 
@@ -34,9 +36,17 @@ padding: 184px calc(6*${theme.gap});
 `
 const Content = styled.div`
   font-size: 1.2rem;
-  /* font-family: "Georgia"; */
-`
 
+  p {
+    padding-top: calc(2*${theme.gap});
+  }
+
+`
+const Excerpt = styled.div`
+  font-size: 1.2rem;
+  padding: ${theme.gap} 0;
+
+`
 
 
 const Article = ({ article }) => {
@@ -47,8 +57,9 @@ const Article = ({ article }) => {
       </Head>
 
       <ArticleMeta metadata={ article }/>
-      
-      <Content dangerouslySetInnerHTML={{ __html: md.render(article.content) }} />
+      <Excerpt dangerouslySetInnerHTML={{ __html: md.render(article.excerpt) }} />
+      <Image imageObj={article.thumbnail}/>
+      <Content className='article-content' dangerouslySetInnerHTML={{ __html: md.render(article.content) }} />
 
     </ArticleWrapper>
   )

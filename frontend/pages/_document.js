@@ -1,6 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from "next/document"
 import styled, { ServerStyleSheet, ThemeProvider } from "styled-components"
-import { bodyFont, accentFont } from "../utils/fonts";
+import { sansSerifFont, serifFont } from "../utils/fonts";
 
 import { theme }  from '../utils/theme-styles'
 
@@ -12,7 +12,7 @@ const resetStyles = `
     html, body {
       font-size: 18px;
       line-height: 1.6;
-      font-family: ${bodyFont};
+      font-family: ${sansSerifFont};
       font-style: normal;
       padding: 0;
       margin: 0;
@@ -35,11 +35,15 @@ const resetStyles = `
     }
 
     h1,h2 {
-      font-family: ${accentFont};
+      font-family: ${serifFont};
+      color: ${theme.textMain};
+      
     }
 
     h3 {
       font-weight: 500;
+      color: ${theme.textMain};
+
     }
 
     h1 {
@@ -51,7 +55,12 @@ const resetStyles = `
       margin-bottom: 12px;
 
     }
-
+    p {
+      line-height: 1.75;
+      padding: 0;
+      margin: 0;
+      color: ${theme.textMain};
+    }
     
     
     img {

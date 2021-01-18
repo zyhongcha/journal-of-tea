@@ -1,5 +1,5 @@
 export const theme = {
-  accent: "#ffb73f",
+  accent: "#eea24b",
   accentLight: "#ffd897",
   accentLighter: "#ffebc9",
 
@@ -7,7 +7,7 @@ export const theme = {
   white: "#fff",
   bg: "#F9F9F9",
   bgLighter: "#F9F9F9",
-  textMain: "#505050",
+  textMain: "#222",
   textLighter: "#444",
   gap: "18px",
   pageWidth: "1366px",
@@ -16,19 +16,19 @@ export const theme = {
 
 }
 
-export const themeNavLinks = `
-background-image: linear-gradient(${theme.textLighter}, ${theme.textLighter} ), linear-gradient(${theme.accent} , ${theme.accent});
-background-size: 100% 2px, 0 2px;
+export const themeNavLinks = (baseColor = theme.textLighter, accentColor = theme.accent, lineThickness = "2") => { return  `
+background-image: linear-gradient(${baseColor}, ${baseColor} ), linear-gradient(${accentColor} , ${accentColor});
+background-size: 100% ${lineThickness}px, 0 ${lineThickness}px;
 background-position: 100% 100%, 0 100%;
 background-repeat: no-repeat;
 transition: background-size 150ms linear;
 &:hover {
-    background-size: 0 2px, 100% 2px;
+    background-size: 0 ${lineThickness}px, 100% ${lineThickness}px;
 }
 
   }
 
-`
+`}
 
 export const themeTitle = `
 background-image: linear-gradient(${theme.accent} , ${theme.accent});

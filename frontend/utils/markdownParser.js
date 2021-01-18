@@ -21,8 +21,9 @@ export const md = require("markdown-it")({
           token.attrObj.sizes = "(min-width: 750px) 750px"
           token.attrObj.loading = "lazy"
           
-          token.attrObj.style = `padding: calc(1.25 * ${theme.gap}) 0`
+          token.attrObj.style = `padding: calc(2 * ${theme.gap}) 0 0`
           break
+
       }
     },
   }).use(require("markdown-it-modify-token"))

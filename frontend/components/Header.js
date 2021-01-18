@@ -1,4 +1,4 @@
-import { accentFont } from "../utils/fonts"
+import { serifFont } from "../utils/fonts"
 import Link from "next/link"
 import { theme, themeNavLinks, themeTitle } from "../utils/theme-styles"
 import { device } from "../lib/media"
@@ -42,12 +42,11 @@ transition-timing-function: ease-linear;
   }
 `
 
-const TitleLink = styled.a`
-    
+const TitleLink = styled.a`    
 `
 
 export const Title = styled.h1`
-  font-family: ${accentFont};
+  font-family: ${serifFont};
   font-weight: 400;
   font-size: 1.9rem;
   margin: 0;
@@ -59,12 +58,12 @@ export const Title = styled.h1`
 `
 
 const InnerLink = styled.a`
-  font-family: ${accentFont};
+  font-family: ${serifFont};
   cursor: pointer;
   &:not(:last-of-type) {
     margin: 0 1rem;
   }
-  ${themeNavLinks}
+  ${themeNavLinks(...[,,], "1")}
 
   @media ${device.mobile} {
     display: none;

@@ -5,7 +5,7 @@ import styled from "styled-components"
 import Link from "next/link"
 // import { TimelineLite } from 'gsap/gsap-core'
 import { useEffect, useRef } from 'react'
-import { accentFont } from "../utils/fonts"
+import { serifFont } from "../utils/fonts"
 import { Title } from './Header'
 
 
@@ -37,7 +37,7 @@ const MenuWrapper = styled.div`
         max-height: 100%;
         align-items: flex-end;
         justify-content: center;
-        font-family: ${accentFont};
+        font-family: ${serifFont};
 
         &>a {
             padding: 1.5rem 10px 1.5rem 0;

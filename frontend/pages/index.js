@@ -23,7 +23,7 @@ const Home = ({ articles, page }) => {
 }
 
 export const getStaticProps = async ( ) => {
-  const articles = await fetchAPI(`/articles`)
+  const articles = await fetchAPI(`/articles?_sort=published:DESC`)
 
   return {
     props: {

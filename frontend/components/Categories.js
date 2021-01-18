@@ -1,5 +1,5 @@
 import { theme } from "../utils/theme-styles"
-import { accentFont, bodyFont } from "../utils/fonts"
+import { serifFont, sansSerifFont } from "../utils/fonts"
 
 
 import Link from "next/link"

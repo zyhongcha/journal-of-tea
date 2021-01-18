@@ -10,11 +10,8 @@ const Container = styled.article`
     /* margin: calc(2*${theme.gap}) ${theme.gap}; */
     display: flex;
     flex-direction: column;
-    background: ${theme.white};
-    box-shadow: 0px 1.3px 3.4px rgba(0,0,0,0.13), 0px 0px 3.2px rgba(0,0,0,0.11);
-    border-radius: 5px;
-
-
+    border-radius: 3px;
+    box-shadow: 0px 1.3px 3.4px rgba(0,0,0,0.13), 0px 0px 2px rgba(0,0,0,0.11);
 
 
     @media ${device.tablet} {
@@ -32,6 +29,8 @@ const Container = styled.article`
 
 const InnerWrapper = styled.div`
     padding: ${theme.gap};
+    background: ${theme.white};
+
 
 ` 
 
@@ -48,6 +47,7 @@ const Img = styled(Image)`
     height: 220px;
     object-fit: cover;
     cursor: pointer;
+    border-radius: 3px 3px 0 0;
     
     &:hover {
         opacity: 0.8;
