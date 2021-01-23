@@ -1,6 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from "next/document"
 import styled, { ServerStyleSheet, ThemeProvider } from "styled-components"
 import { sansSerifFont, serifFont } from "../utils/fonts";
+import { device }  from '../lib/media'
 
 import { theme }  from '../utils/theme-styles'
 
@@ -37,7 +38,13 @@ const resetStyles = `
     h1,h2 {
       font-family: ${serifFont};
       color: ${theme.textMain};
-      
+
+    }
+
+    @media ${device.mobile} {
+      h1 {
+        line-height: 1.25
+      }
     }
 
     h3 {

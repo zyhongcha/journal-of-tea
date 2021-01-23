@@ -21,16 +21,13 @@ import { serifFont } from "../../utils/fonts"
 
 const ArticleWrapper = styled.div`
 max-width: ${theme.articlePageWidth};
-margin: 0 auto;
+margin: calc(2*${theme.gap}) auto;
 
-padding: 184px calc(6*${theme.gap});
 
   @media ${device.tablet} {
-  padding: calc(4*${theme.gap});
   }
 
   @media ${device.mobile} {
-  padding: ${theme.gap};
   }
 
 `

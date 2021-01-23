@@ -6,9 +6,7 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 
 const Home = ({ articles, page }) => {
-  console.log(articles)
   const router = useRouter()
-  console.log(router)
 
   return (
     <>

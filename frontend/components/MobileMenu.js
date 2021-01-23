@@ -16,8 +16,8 @@ const MenuContainer = styled.div.attrs({
     transition: transform 400ms ease-in-out;
     position: fixed;
     margin-right:auto;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     right: 0;
     top:0;
     background: #fff;
@@ -51,7 +51,6 @@ const MobileMenu = ({ open }) => {
 
     return (
         <MenuContainer open={open}>
-            <Title>Zyhong's Journal of Tea</Title>
             <MenuWrapper>
             <Link href="/about">
             <a>About</a>

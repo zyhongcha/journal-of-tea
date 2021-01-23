@@ -1,14 +1,14 @@
 import Header from "../components/Header"
-import { Content } from "../components/Layout"
+import { Layout, Content } from "../components/Layout"
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
-    <Content>
+    <Layout>
     <Header />
+    <Content>
     <Component {...pageProps} />
     </Content>
-    </>
+    </Layout>
   ) 
   
 }

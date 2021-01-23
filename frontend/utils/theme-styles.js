@@ -11,8 +11,7 @@ export const theme = {
   textLighter: "#444",
   gap: "18px",
   pageWidth: "1366px",
-  articlePageWidth: "1024px",
-  navbarHeight: "100px",
+  articlePageWidth: "808px",
 
 }
 
