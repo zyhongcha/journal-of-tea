@@ -10,7 +10,6 @@ const MetaWrapper = styled.div`
     }
 
     h1 {
-      font-weight: 300;
       margin: calc(2 * ${theme.gap}) 0;
     }
 `

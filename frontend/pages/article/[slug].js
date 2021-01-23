@@ -10,7 +10,7 @@ import { device } from "../../lib/media"
 import ArticleMeta from '../../components/ArticleMeta'
 import styled from 'styled-components'
 import Image from '../../components/Image'
-
+import RelatedArticles from '../../components/RelatedArticles'
 import { theme } from "../../utils/theme-styles"
 
 import {md } from '../../utils/markdownParser'
@@ -46,7 +46,7 @@ const Excerpt = styled.div`
 `
 
 
-const Article = ({ article }) => {
+const Article = ({ article, relatedArticles }) => {
   return (
     <ArticleWrapper>
       <Head>
@@ -57,7 +57,7 @@ const Article = ({ article }) => {
       <Excerpt dangerouslySetInnerHTML={{ __html: md.render(article.excerpt) }} />
       <Image imageObj={article.thumbnail}/>
       <Content className='article-content' dangerouslySetInnerHTML={{ __html: md.render(article.content) }} />
-
+    <RelatedArticles relatedArticles={relatedArticles}/>
     </ArticleWrapper>
   )
 }
@@ -79,19 +79,19 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const articles = await fetchAPI(`/articles?slug=${params.slug}`)
+  const articles = await fetchAPI(`/articles?_sort=published_at:desc`)
 
-  //   const unparsedMarkdown = fs.readFileSync(
-  //     path.join("posts", slug + ".md"),
-  //     "utf-8"
-  //   )
-  //   const parsedMarkdown = matter(unparsedMarkdown)
+  const article = articles.filter((article, index) => {    
+    return article.slug === params.slug
+  })
+  let articleIndex = articles.indexOf(article[0])
 
-  //   const htmlString = marked(parsedMarkdown.content)
-
+  const [nextArticle, prevArticle] = [articles[articleIndex-1] ?? null, articles[articleIndex+1] ?? null] 
+    
   return {
     props: {
-      article: articles[0],
+      article: article[0],
+      relatedArticles: [nextArticle, prevArticle]
     },
     revalidate: 1,
   }

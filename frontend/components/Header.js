@@ -46,6 +46,8 @@ const HeaderElement = styled.header`
 
 const TitleLink = styled.a`
   z-index: 10;
+cursor: pointer;
+
 `
 
 export const Title = styled.h1`
@@ -53,6 +55,7 @@ export const Title = styled.h1`
   font-weight: 400;
   font-size: 1.9rem;
   margin: 0;
+
   ${themeTitle};
   @media ${device.mobile} {
     font-size: 1.4rem;
