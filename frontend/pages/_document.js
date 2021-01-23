@@ -38,6 +38,7 @@ const resetStyles = `
     h1,h2 {
       font-family: ${serifFont};
       color: ${theme.textMain};
+      font-weight: 300;
 
     }
 

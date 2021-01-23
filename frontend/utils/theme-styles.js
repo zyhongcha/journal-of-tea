@@ -20,6 +20,7 @@ background-image: linear-gradient(${baseColor}, ${baseColor} ), linear-gradient(
 background-size: 100% ${lineThickness}px, 0 ${lineThickness}px;
 background-position: 100% 100%, 0 100%;
 background-repeat: no-repeat;
+text-decoration:none;
 transition: background-size 150ms linear;
 &:hover {
     background-size: 0 ${lineThickness}px, 100% ${lineThickness}px;
