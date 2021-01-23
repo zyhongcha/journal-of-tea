@@ -10,39 +10,40 @@ import styled from "styled-components"
 import gsap from "gsap"
 import { useRouter } from "next/router"
 
-const FixedHeader = styled.div`
-    position: fixed;
-
-`
-
 const HeaderElement = styled.header`
   display: flex;
   align-items: center;
-  position: ${props => props.isArticle ? 'fixed' : 'relative'};
-  left: ${props => props.isArticle ? 0 : 'unset'};
-  right: ${props => props.isArticle ? 0 : 'unset'};
+  /* position: ${(props) => (props.isArticle ? "fixed" : "relative")}; */
+  position: sticky;
+  top: 0;
+  /* left: ${(props) => (props.isArticle ? 0 : "unset")}; */
+  /* right: ${(props) => (props.isArticle ? 0 : "unset")}; */
   background: #fff;
   z-index: 10;
   justify-content: space-between;
   margin: 0 auto;
-  height: ${theme.navbarHeight};
-  max-width: ${props => props.isArticle ? theme.articlePageWidth : theme.pageWidth};
-  padding: ${props => props.isArticle ? `${theme.gap} calc(6*${theme.gap})`: 0};
-    transition-property: max-width, padding, margin, left,right, position; 
-transition-duration: 800ms;
-transition-delay: 500ms;
-transition-timing-function: ease-linear;
+  height: 100px;
+  /* max-width: ${theme.pageWidth}; */
+
+  max-width: ${(props) =>
+    props.isArticle ? theme.articlePageWidth : theme.pageWidth};
+  transition-property: max-width, margin, left, right, position;
+  transition-duration: 800ms;
+  transition-delay: 500ms;
+  transition-timing-function: ease-linear;
 
   @media ${device.tablet} {
     /* padding: calc(4*${theme.gap}); */
   }
 
   @media ${device.mobile} {
-    padding: ${theme.gap} 0;
+    height: 70px;
+    width: 100%;
   }
 `
 
-const TitleLink = styled.a`    
+const TitleLink = styled.a`
+  z-index: 10;
 `
 
 export const Title = styled.h1`
@@ -50,7 +51,6 @@ export const Title = styled.h1`
   font-weight: 400;
   font-size: 1.9rem;
   margin: 0;
-
   ${themeTitle};
   @media ${device.mobile} {
     font-size: 1.4rem;
@@ -63,7 +63,7 @@ const InnerLink = styled.a`
   &:not(:last-of-type) {
     margin: 0 1rem;
   }
-  ${themeNavLinks(...[,,], "1")}
+  ${themeNavLinks(...[, ,], "1")}
 
   @media ${device.mobile} {
     display: none;
@@ -71,30 +71,31 @@ const InnerLink = styled.a`
 `
 
 const Header = ({ props }) => {
-    const [open, setOpen] = useState(false)
-    const router = useRouter()
+  const [open, setOpen] = useState(false)
+  const router = useRouter()
 
+  //   let pageWidthDifference = theme.pageWidth - theme.articlePageWidth - 6*(theme.gap.substring(0,2))
+  // console.log(pageWidthDifference)
 
-//   let pageWidthDifference = theme.pageWidth - theme.articlePageWidth - 6*(theme.gap.substring(0,2))
-    // console.log(pageWidthDifference)
-
-    //   useEffect(() => {
-            // gsap.to('.navbar', {
-            //     x: router.pathname.startsWith('/article/') === true ? pageWidthDifference : 0 
-            //     })
-//   },[router])
+    useEffect(() => {
+      if (open) {
+        document.body.style = "overflow-y:hidden"
+      } else {
+        document.body.style = ""
+      }
+    },[open])
 
   function toggleOpen() {
-    console.log(open, "clicked ")
     setOpen((prevState) => !prevState)
+
   }
 
   return (
-    <HeaderElement isArticle={router.pathname.startsWith('/article/')}>
+    <HeaderElement isArticle={router.pathname.startsWith("/article/")}>
       <Link href="/">
-        <a>
+        <TitleLink>
           <Title>Zyhong's Journal of Tea</Title>
-        </a>
+        </TitleLink>
       </Link>
       <div>
         <Link href="/about">
