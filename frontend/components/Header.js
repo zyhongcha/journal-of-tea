@@ -39,6 +39,8 @@ const HeaderElement = styled.header`
   @media ${device.mobile} {
     height: 70px;
     width: 100%;
+    padding: 0 ${theme.gap};
+
   }
 `
 

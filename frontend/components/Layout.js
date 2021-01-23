@@ -15,7 +15,7 @@ export const Layout = styled.div`
     }
 
     @media ${device.mobile} {
-        padding: 0 ${theme.gap};
+        padding: 0;
     }
 
 `
@@ -27,6 +27,10 @@ export const Content = styled.main`
     transition-duration: 200ms;
     transition-timing-function: ease-out;
     font-family: ${ sansSerifFont };
+
+    @media ${device.mobile} {
+        padding: 0 ${theme.gap};
+    }
 
    
 `
