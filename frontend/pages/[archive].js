@@ -1,11 +1,24 @@
 import { fetchAPI } from "../lib/api"
 import Articles from "../components/Articles"
+import Pagination from "../components/Pagination"
 
-const Archive = ({ archive }) => {
+const Archive = ({ archive, page, archiveSlug }) => {
+  const articlesToShow = 14
+  const totalPages = Math.ceil(archive.length / articlesToShow)
+  const offset = page > 1 ? (page - 1) * articlesToShow : 0
+  const limit = offset + articlesToShow
+  archive = archive.slice(offset, limit)
+
   return (
     <>
       <Articles articles={archive} />
-      {console.log(archive)}
+      {page !== totalPages ? (
+        <Pagination
+          page={page}
+          totalPages={totalPages}
+          archiveSlug={archiveSlug}
+        />
+      ) : null}
     </>
   )
 }
@@ -25,35 +38,33 @@ const Archive = ({ archive }) => {
 // }
 
 export const getServerSideProps = async (context) => {
-  const page = context.query.page || 1
-  const articlesToShow = 2 // -1 otherwise 0 would throw err when not enough articles
-  const offset = page > 1 ? (page - 1) * articlesToShow : 0
+  const page = context.query.page ?? 1
+
+  // const articlesToShow = 2 // -1 otherwise 0 would throw err when not enough articles
+  // const offset = page > 1 ? (page - 1) * articlesToShow : 0
 
   // const articles = await fetchAPI(`/articles?_start=${offset}&_limit=${articlesToShow}&categories.slug=${context.params.archive}&_sort=published:DESC`)
-  try {
+  let categoryQueries =  ""
+  if (context.params.archive !== "articles") {
+    categoryQueries = `categories.slug=${context.params.archive}`
+  }
+  
     const articles = await fetchAPI(
-      `/articles?categories.slug=${context.params.archive}&_start=${offset}&_limit=${articlesToShow}&_sort=published:desc`
-    )
-
-    //  let filteredArticles = articles.filter((article) => {
-    //    return article.categories.some((c) => {
-    //      return c.slug === context.params.archive
-    //    })
-    //  })
+      `/articles?${categoryQueries}&_sort=published:desc`
+      )
 
     if (!articles) {
-      return { notFound: true}
+      return { notFound: true }
     }
 
     return {
       props: {
         archive: articles,
+        page: page,
+        archiveSlug: context.params.archive,
       },
+
     }
-  } catch (err) {
-    console.log(err)
-    return { notFound: true }
-  }
 }
 
 export default Archive

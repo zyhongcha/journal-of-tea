@@ -9,5 +9,14 @@ module.exports = {
     images: {
         domains: [ process.env.AMAZON_S3_IMAGES_DOMAIN ],
         imageSizes: [152, 500, 750, 1000]
-    }
+    },
+    async redirects() {
+        return [
+          {
+            source: '/(articles|article)',
+            destination: '/',
+            permanent: true
+          }
+        ]
+      }
 }

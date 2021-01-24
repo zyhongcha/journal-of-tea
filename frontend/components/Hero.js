@@ -86,7 +86,7 @@ const Hero = ({ firstArticle }) => {
               </Link>
             </ArticleCategory>
             <ArticleTitle>
-              <Link href={firstArticle.slug}>
+              <Link href={`/article/${firstArticle.slug}`}>
                 <a>
                   <Cta>
                     Read more &raquo;

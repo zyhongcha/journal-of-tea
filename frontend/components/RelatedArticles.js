@@ -1,76 +1,74 @@
-import styled from 'styled-components'
-import { theme, themeNavLinks} from "../utils/theme-styles"
+import styled from "styled-components"
+import { theme, themeNavLinks } from "../utils/theme-styles"
 import { device } from "../lib/media"
-import Image from './Image'
+import Image from "./Image"
 import Link from "next/link"
 
-
 const Container = styled.div`
-    border-top: 1px solid #ddd;
-    padding-top: calc(2*${theme.gap});
-    margin: calc(4* ${theme.gap}) 0 ;
+  border-top: 1px solid #ddd;
+  padding-top: calc(2 * ${theme.gap});
+  margin: calc(6 * ${theme.gap}) 0;
 `
 const Wrapper = styled.div`
-    display: flex;
-    justify-content: space-between;
-`
+  display: flex;
+  justify-content: space-between;
 
+  span {
+    padding: 0 8px;
+    margin: auto 0;
+  }
+`
 
 const LinkWrapper = styled.div`
-    max-width: 30ch;
-    align-self: center;
-    a {        
-        font-weight: bold;
-        ${themeNavLinks(...[, ,], "1")}
-    }  
-    span {
-        padding: 0 12px;
-    }
+  max-width: 30ch;
+  align-self: center;
+  margin: ${(props) => (props.right ? "0 0 0 auto" : "0 auto 0 0")};
+  text-align: ${(props) => (props.right ? "right" : "left")};
+  a {
+    font-weight: bold;
+    ${themeNavLinks(...[, ,], "1")}
+  }
 
-    @media ${device.mobile} {
-        max-width: 40vw;
-    }
+  @media ${device.mobile} {
+    max-width: 35vw;
+  }
 `
-
 
 const Title = styled.h4`
-    ${themeNavLinks(...[, ,], "1")}
-    margin:0;
-    text-align: ${props => props.right ? "right" : "left"};
-
+  ${themeNavLinks(...[, ,], "1")}
+  margin:0;
+  text-align: ${(props) => (props.right ? "right" : "left")};
 `
 
+const RelatedArticles = ({ relatedArticles }) => {
+  const [nextArticle, prevArticle] = relatedArticles
 
-const RelatedArticles = ( { relatedArticles } ) => {
-
-    const [nextArticle, prevArticle] = relatedArticles
-
-    return (
-        <Container>
-        <Wrapper>
-            
-            {prevArticle && <LinkWrapper >
-                <span>&lang;</span>
-            <Link href={`/article/${prevArticle.slug}`}>
-                <a>{prevArticle.title}</a>
-            </Link>
+  return (
+    <Container>
+      <Wrapper>
+        {nextArticle && (
+          <>
+            <span>&lang;</span>
+            <LinkWrapper>
+              <Link href={`/article/${nextArticle.slug}`}>
+                <a>{nextArticle.title}</a>
+              </Link>
             </LinkWrapper>
-            }
-            {nextArticle && 
-            <LinkWrapper >
-            <Link href={`/article/${nextArticle.slug}`}>
-                <a>
-            {nextArticle.title}
-            </a>
-            </Link>
+          </>
+        )}
+
+        {prevArticle && (
+          <>
+            <LinkWrapper right>
+              <Link href={`/article/${prevArticle.slug}`}>
+                <a right>{prevArticle.title}</a>
+              </Link>
+            </LinkWrapper>
             <span>&rang;</span>
-            </LinkWrapper>
-            }
-
-        </Wrapper>
-        </Container>
-
-
-    )
+          </>
+        )}
+      </Wrapper>
+    </Container>
+  )
 }
 export default RelatedArticles

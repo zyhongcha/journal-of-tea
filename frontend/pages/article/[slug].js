@@ -37,7 +37,9 @@ const Content = styled.div`
   p {
     padding-top: calc(2*${theme.gap});
   }
-
+  em {
+    text-align: center;
+  }
 `
 const Excerpt = styled.div`
   font-size: 1.2rem;
@@ -64,7 +66,7 @@ const Article = ({ article, relatedArticles }) => {
 
 export const getStaticPaths = async () => {
   //   const files = fs.readdirSync("posts")
-  const articles = await fetchAPI("/articles")
+  const articles = await fetchAPI("/articles?_sort=published_at:desc")
 
   
 

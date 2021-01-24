@@ -18,7 +18,9 @@ const ArticleContainer = styled.div`
 const Grid = styled.section`
   display: flex;
   gap: calc(2 * ${theme.gap});
-  justify-content: center;
+  /* justify-content: center; */
+  justify-content: flex-start;
+
   flex-wrap: wrap;
 
   @media ${device.mobile} {
@@ -27,6 +29,8 @@ const Grid = styled.section`
 `
 
 const Articles = ({ articles }) => {
+
+
   return (
     <>
       <Hero firstArticle={articles[0]} />
@@ -35,10 +39,25 @@ const Articles = ({ articles }) => {
           {articles.map((article, key) => {
             return (
               key > 0 &&
-              key < 4 && <Card key={key // offset by 1 post
+              key < 7 && <Card key={key // offset by 1 post
                   } article={article} />
             )
           })}
+            </Grid>
+      </ArticleContainer>
+        <Hero key="2" firstArticle={articles[7]} />
+      <ArticleContainer>
+      <Grid>
+
+
+        {articles.map((article, key) => {
+            return (
+              key > 7 &&
+               <Card key={key // offset by 1 post
+                  } article={article} />
+            )
+          })}
+
         </Grid>
       </ArticleContainer>
     </>
