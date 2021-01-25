@@ -35,7 +35,7 @@ const InnerHeroSection = styled.div`
   justify-content: space-between;
 `
 
-const ArticleCategory = styled.a`
+const ArticleCategory = styled.span`
   color: ${theme.white};
   font-size: 1rem;
   text-transform: uppercase;
@@ -81,7 +81,7 @@ const Hero = ({ firstArticle }) => {
         <HeroWrapper image={firstArticle.thumbnail.formats.large.url}>
           <InnerHeroSection>
             <ArticleCategory>
-              <Link href={firstArticle.categories[0].slug}>
+              <Link href={`/${firstArticle.categories[0].slug}`}>
                 <a>{firstArticle.categories[0].category_name}</a>
               </Link>
             </ArticleCategory>

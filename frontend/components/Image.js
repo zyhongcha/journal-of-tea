@@ -28,7 +28,7 @@ const Image = ({ imageObj, className, ...params }) => {
   return (
     <img
       src={imageObj.url}
-      srcset={buildSrcSet()}
+      srcSet={buildSrcSet()}
       alt={imageObj.alternativeText || imageObj.name}
       decoding="async"
       loading="lazy"

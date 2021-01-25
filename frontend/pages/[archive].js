@@ -1,6 +1,17 @@
 import { fetchAPI } from "../lib/api"
 import Articles from "../components/Articles"
 import Pagination from "../components/Pagination"
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+import styled from 'styled-components'
+
+const Title = styled.h1`
+  font-size: 1.9rem;
+ span {
+text-decoration: underline;
+ }
+
+`
 
 const Archive = ({ archive, page, archiveSlug }) => {
   const articlesToShow = 14
@@ -11,6 +22,7 @@ const Archive = ({ archive, page, archiveSlug }) => {
 
   return (
     <>
+    <Title>browsing <span>{archiveSlug && archiveSlug}</span></Title>
       <Articles articles={archive} />
       {page !== totalPages ? (
         <Pagination
@@ -44,13 +56,13 @@ export const getServerSideProps = async (context) => {
   // const offset = page > 1 ? (page - 1) * articlesToShow : 0
 
   // const articles = await fetchAPI(`/articles?_start=${offset}&_limit=${articlesToShow}&categories.slug=${context.params.archive}&_sort=published:DESC`)
-  let categoryQueries =  ""
-  if (context.params.archive !== "articles") {
-    categoryQueries = `categories.slug=${context.params.archive}`
+  let additionalQueries =  "_start=14"
+  if (context.params.archive !== "archive") {
+    additionalQueries = `categories.slug=${context.params.archive}`
   }
   
     const articles = await fetchAPI(
-      `/articles?${categoryQueries}&_sort=published:desc`
+      `/articles?${additionalQueries}&_sort=published:desc`
       )
 
     if (!articles) {

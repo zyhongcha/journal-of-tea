@@ -59,9 +59,9 @@ const RelatedArticles = ({ relatedArticles }) => {
 
         {prevArticle && (
           <>
-            <LinkWrapper right>
+            <LinkWrapper right="true">
               <Link href={`/article/${prevArticle.slug}`}>
-                <a right>{prevArticle.title}</a>
+                <a right="true">{prevArticle.title}</a>
               </Link>
             </LinkWrapper>
             <span>&rang;</span>

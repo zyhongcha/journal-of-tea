@@ -65,9 +65,9 @@ const Pagination = ({ page, totalPages, archiveSlug }) => {
 
         {totalPages > 1 && page !== totalPages ? (
           <>
-            <LinkWrapper right>
+            <LinkWrapper right="true">
               <Link href={`/${archiveSlug}?page=${parseInt(page) + 1}`}>
-                <a right>Next page</a>
+                <a right="true">Next page</a>
               </Link>
             </LinkWrapper>
             <span>&rang;</span>

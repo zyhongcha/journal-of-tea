@@ -6,7 +6,7 @@ import { device } from "../lib/media"
 
 const ArticleContainer = styled.div`
   flex: 1;
-  margin-top: calc(4 * ${theme.gap});
+  margin: calc(4 * ${theme.gap}) 0 calc(4 * ${theme.gap});
   /* margin: 0　calc(-1 * ${theme.gap}); // minus the initial gap */
   /* margin: 0 ${theme.gap}; */
   /* max-width: 1366px; // 1366px is the second most common device width in 2020 */
@@ -17,7 +17,7 @@ const ArticleContainer = styled.div`
 
 const Grid = styled.section`
   display: flex;
-  gap: calc(2 * ${theme.gap});
+  gap: calc(3 * ${theme.gap});
   /* justify-content: center; */
   justify-content: flex-start;
 
