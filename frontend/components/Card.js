@@ -7,18 +7,10 @@ import Categories from './Categories'
 
 const Container = styled.article`
     flex: 0 1 calc(33.33% - 2*${theme.gap}); // used calc to consider the gaps, otherwise one row would show 2 cards instead of 3 because of overflow wrapping
-    /* margin: calc(2*${theme.gap}) ${theme.gap}; */
     display: flex;
     flex-direction: column;
     border-radius: 3px;
-    box-shadow: 0px 1.3px 3.4px rgba(0,0,0,0.13), 0px 0px 2px rgba(0,0,0,0.11);
-
-
-    @media ${device.tablet} {
-        /* flex: 1 0 calc(50% - 2*${theme.gap});  */
-        /* margin: ${theme.gap} calc(${theme.gap}/2); */
-    
-    }
+    border: 1px solid #dfdfdf;
 
     @media ${device.mobile} {
         flex: 1 0 100%;

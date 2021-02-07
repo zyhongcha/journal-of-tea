@@ -4,6 +4,9 @@ import Pagination from "../components/Pagination"
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import styled from 'styled-components'
+import Link from "next/link"
+import { theme, themeNavLinks } from "../utils/theme-styles"
+import { device } from "../lib/media"
 
 const Title = styled.h1`
   font-size: 1.9rem;
@@ -12,6 +15,18 @@ text-decoration: underline;
  }
 
 `
+const Container = styled.div`
+  display: flex;
+  gap: 8px;
+`
+const LinkWrapper = styled.div`
+  a {
+    font-weight: bold;
+    ${themeNavLinks(...[, ,], "1")}
+  }
+`
+
+
 
 const Archive = ({ archive, page, archiveSlug }) => {
   const articlesToShow = 14
@@ -31,31 +46,21 @@ const Archive = ({ archive, page, archiveSlug }) => {
           archiveSlug={archiveSlug}
         />
       ) : null}
+      <Container>
+      <span>&lang;</span>
+      <LinkWrapper>
+      <Link href="/">
+      <a>back to homepage</a>
+      </Link>
+      </LinkWrapper>
+      </Container>
     </>
   )
 }
 
-// export const getServerSidePath = async () => {
-//   const categories = await fetchAPI("/categories")
-
-//   return {
-//     paths:
-//     [...categories.map((category) => ({
-//       params: { archive: category.slug },
-//     })),
-//     { params: { archive: '1' } },
-//         ],
-//     fallback: false,
-//   }
-// }
 
 export const getServerSideProps = async (context) => {
   const page = context.query.page ?? 1
-
-  // const articlesToShow = 2 // -1 otherwise 0 would throw err when not enough articles
-  // const offset = page > 1 ? (page - 1) * articlesToShow : 0
-
-  // const articles = await fetchAPI(`/articles?_start=${offset}&_limit=${articlesToShow}&categories.slug=${context.params.archive}&_sort=published:DESC`)
   let additionalQueries =  "_start=14"
   if (context.params.archive !== "archive") {
     additionalQueries = `categories.slug=${context.params.archive}`

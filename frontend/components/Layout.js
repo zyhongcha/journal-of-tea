@@ -8,14 +8,14 @@ import { theme } from '../utils/theme-styles'
 export const Layout = styled.div`
     max-width: ${ theme.pageWidth };
     margin: auto;
-    padding: 0  calc(4 * ${theme.gap});
+    padding: 0  calc(4 * ${theme.gap}) calc(4 * ${theme.gap});
 
     @media (max-width: ${theme.pageWidth}) {
-        padding: 0 calc(2* ${theme.gap});
+        padding: 0 calc(2* ${theme.gap}) calc(4 * ${theme.gap});
     }
 
     @media ${device.mobile} {
-        padding: 0;
+        padding: 0 0 calc(2 * ${theme.gap});
     }
 
 `

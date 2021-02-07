@@ -20,7 +20,13 @@ const HeroWrapper = styled.div.attrs((props) => ({
   border-radius: 5px;
   @media ${device.mobile} {
     margin: 0 0 ${theme.gap};
-    height: 360px;
+    height: 420px;
+    background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.55) 100%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    url(${(props) => props.image});
   }
 `
 

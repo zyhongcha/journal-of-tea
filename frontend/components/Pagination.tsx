@@ -36,9 +36,11 @@ const LinkWrapper = styled.div`
   }
 `
 
+const InnerLink = styled.a
+
 const Pagination = ({ page, totalPages, archiveSlug }) => {
-  page = parseInt(page)
-  totalPages = parseInt(totalPages)
+  page = +page
+  totalPages = +totalPages
 
   return (
     <Container>
@@ -67,7 +69,7 @@ const Pagination = ({ page, totalPages, archiveSlug }) => {
           <>
             <LinkWrapper right="true">
               <Link href={`/${archiveSlug}?page=${parseInt(page) + 1}`}>
-                <a right="true">Next page</a>
+                <InnerLink right="true">Next page</InnerLink>
               </Link>
             </LinkWrapper>
             <span>&rang;</span>

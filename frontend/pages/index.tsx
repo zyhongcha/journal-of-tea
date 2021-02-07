@@ -14,19 +14,17 @@ a {
   ${themeNavLinks(...[, ,], "1")}
 }
 `
+interface Props {
+  articles: {}[],
+}
 
-const Home = ({ articles, page }) => {
+const Home = ({ articles })  => {
   const router = useRouter()
-  console.log(router)
 
   return (
     <>
       <Articles articles={articles} />
-      {/* <Pagination currentPage={page}/> */}
-      {/* 
-      <Link href={`${router.pathname}?page=${page + 1}`}>
-        <a>Next page</a>
-      </Link> */}
+   
       <GoToArchive>
         <Link href="/archive">
           <a>Browse more articles</a>
@@ -37,7 +35,7 @@ const Home = ({ articles, page }) => {
 }
 
 export const getStaticProps = async () => {
-  const articles = await fetchAPI(`/articles?_limit=14&_sort=published:DESC`)
+  const articles : [] = await fetchAPI(`/articles?_limit=14&_sort=published:DESC`)
 
   return {
     props: {

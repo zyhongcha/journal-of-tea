@@ -3,28 +3,21 @@ import Link from "next/link"
 import { theme, themeNavLinks, themeTitle } from "../utils/theme-styles"
 import { device } from "../lib/media"
 import Hamburger from "./Hamburger"
-import { GiHamburgerMenu } from "react-icons/gi"
 import MobileMenu from "./MobileMenu"
 import { useState, useEffect } from "react"
 import styled from "styled-components"
-import gsap from "gsap"
 import { useRouter } from "next/router"
 
 const HeaderElement = styled.header`
   display: flex;
   align-items: center;
-  /* position: ${(props) => (props.isArticle ? "fixed" : "relative")}; */
   position: sticky;
   top: 0;
-  /* left: ${(props) => (props.isArticle ? 0 : "unset")}; */
-  /* right: ${(props) => (props.isArticle ? 0 : "unset")}; */
   background: #fff;
   z-index: 10;
   justify-content: space-between;
   margin: 0 auto;
   height: 100px;
-  /* max-width: ${theme.pageWidth}; */
-
   max-width: ${(props) =>
     props.isArticle ? theme.articlePageWidth : theme.pageWidth};
   transition-property: max-width, margin, left, right, position;
@@ -32,9 +25,7 @@ const HeaderElement = styled.header`
   transition-delay: 500ms;
   transition-timing-function: ease-linear;
 
-  @media ${device.tablet} {
-    /* padding: calc(4*${theme.gap}); */
-  }
+
 
   @media ${device.mobile} {
     height: 70px;
@@ -79,20 +70,16 @@ const Header = ({ props }) => {
   const [open, setOpen] = useState(false)
   const router = useRouter()
 
-  //   let pageWidthDifference = theme.pageWidth - theme.articlePageWidth - 6*(theme.gap.substring(0,2))
-  // console.log(pageWidthDifference)
-
     useEffect(() => {
       if (open) {
-        document.body.style = "overflow-y:hidden"
+        document.body.style.overflowY = "hidden"
       } else {
-        document.body.style = ""
+        document.body.style.overflowY = "auto"
       }
     },[open])
 
-  function toggleOpen() {
+  function toggleOpen(): void {
     setOpen((prevState) => !prevState)
-
   }
 
   return (
