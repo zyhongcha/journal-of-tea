@@ -10,6 +10,16 @@ module.exports = {
     domains: [process.env.AMAZON_S3_IMAGES_DOMAIN],
     imageSizes: [152, 500, 750, 1000],
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  webpackDevMiddleware: config => {
+    config.watchOptions = {
+      poll: 1000,
+      aggregateTimeout: 300,
+    }
+    return config
+  },
   async redirects() {
     return [
       

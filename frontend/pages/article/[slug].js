@@ -1,22 +1,12 @@
 import Head from "next/head"
-// import fs from "fs"
-import path from "path"
-import matter from "gray-matter"
-import marked from "marked"
-// import { NEXT_PUBLIC_STRAPI_API_URL } from "./..env.local"
 import { fetchAPI } from "../../lib/api"
-import ReactMarkdown from "react-markdown"
-import { device } from "../../lib/media"
+// import { device } from "../../lib/media"
 import ArticleMeta from '../../components/ArticleMeta'
 import styled from 'styled-components'
 import Image from '../../components/Image'
 import RelatedArticles from '../../components/RelatedArticles'
 import { theme } from "../../utils/theme-styles"
-
 import {md } from '../../utils/markdownParser'
-import { serifFont } from "../../utils/fonts"
-
-
 
 
 const ArticleWrapper = styled.div`
@@ -24,11 +14,6 @@ max-width: ${theme.articlePageWidth};
 margin: calc(2*${theme.gap}) auto;
 
 
-  @media ${device.tablet} {
-  }
-
-  @media ${device.mobile} {
-  }
 
 `
 const Content = styled.div`
@@ -49,6 +34,7 @@ const Excerpt = styled.div`
 
 
 const Article = ({ article, relatedArticles }) => {
+  
   return (
     <ArticleWrapper>
       <Head>
@@ -65,25 +51,22 @@ const Article = ({ article, relatedArticles }) => {
 }
 
 export const getStaticPaths = async () => {
-  //   const files = fs.readdirSync("posts")
   const articles = await fetchAPI("/articles?_sort=published_at:desc")
-
-  
+  const paths = articles.map((article) => ({
+    params: {
+      slug: article.slug,
+    },
+  }))
 
   return {
-    paths: articles.map((article) => ({
-      params: {
-        slug: article.slug,
-      },
-    })),
-    fallback: false,
+    paths,
+    fallback: false
   }
 }
 
 export const getStaticProps = async ({ params }) => {
   const articles = await fetchAPI(`/articles?_sort=published_at:desc`)
-
-  const article = articles.filter((article, index) => {    
+  const article =  articles.filter((article, index) => {    
     return article.slug === params.slug
   })
   let articleIndex = articles.indexOf(article[0])
@@ -95,7 +78,6 @@ export const getStaticProps = async ({ params }) => {
       article: article[0],
       relatedArticles: [nextArticle, prevArticle]
     },
-    revalidate: 1,
   }
 }
 
