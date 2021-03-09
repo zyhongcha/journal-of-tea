@@ -55,9 +55,6 @@ const MobileMenu = ({ open }) => {
             <Link href="/about">
             <a>About</a>
             </Link>
-            <Link href="/about">
-            <a>Contact</a>
-            </Link>
         </MenuWrapper>
         </MenuContainer>
     )

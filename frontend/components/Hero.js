@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { theme, themeNavLinks } from "../utils/theme-styles"
 import { device } from "../lib/media"
-import { serifFont, sansSerifFont } from "../utils/fonts"
+import { sansSerifFont } from "../utils/fonts"
 import Link from "next/link"
 
 const HeroWrapper = styled.div.attrs((props) => ({
@@ -10,9 +10,13 @@ const HeroWrapper = styled.div.attrs((props) => ({
   position: relative;
   height: 512px;
   background-image: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.6) 0%,
-      rgba(255, 255, 255, 0) 100%
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.6) 100%
+    ), linear-gradient(
+      128deg,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(255, 255, 255, 0) 20%
     ),
     url(${(props) => props.image});
   background-size: cover;
@@ -23,7 +27,7 @@ const HeroWrapper = styled.div.attrs((props) => ({
     height: 420px;
     background-image: linear-gradient(
       0deg,
-      rgba(0, 0, 0, 0.55) 100%,
+      rgba(0, 0, 0, 0.6) 100%,
       rgba(255, 255, 255, 0) 100%
     ),
     url(${(props) => props.image});
@@ -33,8 +37,9 @@ const HeroWrapper = styled.div.attrs((props) => ({
 const InnerHeroSection = styled.div`
   position: absolute;
   bottom: 0;
-  left: 0;
-  padding: 0.5rem 2rem;
+  left: 0;   
+  padding: 2rem 2rem;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -46,7 +51,6 @@ const ArticleCategory = styled.span`
   font-size: 1rem;
   text-transform: uppercase;
   font-weight: 300;
-  padding-top: 1rem;
   letter-spacing: 0.1em;
   width: fit-content;
   ${themeNavLinks(theme.white, theme.accent)};
@@ -59,9 +63,10 @@ const ArticleTitle = styled.h2`
   letter-spacing: 0.03em;
   font-family: ${sansSerifFont};
   color: ${theme.white};
-
+  margin: 0;
   @media ${device.notMobile} {
     ${themeNavLinks(theme.white, theme.accent)};
+  transition: none!important;
   }
 
   @media ${device.mobile} {
@@ -91,17 +96,17 @@ const Hero = ({ firstArticle }) => {
                 <a>{firstArticle.categories[0].category_name}</a>
               </Link>
             </ArticleCategory>
-            <ArticleTitle>
               <Link href={`/article/${firstArticle.slug}`}>
                 <a>
+            <ArticleTitle>
                   <Cta>
                     Read more &raquo;
                     <br />
                   </Cta>
                   {firstArticle.title}
+            </ArticleTitle>
                 </a>
               </Link>
-            </ArticleTitle>
           </InnerHeroSection>
         </HeroWrapper>
       ) : null}

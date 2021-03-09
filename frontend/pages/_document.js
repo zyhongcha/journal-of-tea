@@ -1,10 +1,8 @@
 import Document, { Html, Head, Main, NextScript } from "next/document"
-import styled, { ServerStyleSheet, ThemeProvider } from "styled-components"
-import { sansSerifFont, serifFont } from "../utils/fonts";
-import { device }  from '../lib/media'
-
-import { theme }  from '../utils/theme-styles'
-
+import { ServerStyleSheet } from "styled-components"
+import { sansSerifFont, serifFont } from "../utils/fonts"
+import { device } from "../lib/media"
+import { theme } from "../utils/theme-styles"
 
 const resetStyles = `
 
@@ -18,7 +16,25 @@ const resetStyles = `
       padding: 0;
       margin: 0;
       -webkit-font-smoothing: subpixel-antialiased;
-      background: ${theme.white};
+      background: ${theme.white};      
+      box-sizing: border-box;
+
+    }
+
+    #__next {
+      max-width: ${theme.pageWidth};
+      margin: auto;
+      padding: 0  calc(4 * ${theme.gap}) calc(2 * ${theme.gap}) calc(4 * ${theme.gap});
+    }
+    @media screen and (max-width: ${theme.pageWidth}) {
+      #__next {
+        padding: 0 calc(2* ${theme.gap}) calc(4 * ${theme.gap});
+      }
+    }
+    @media screen and ${device.mobile} {
+      #__next {
+        padding: 0 0 calc(2 * ${theme.gap});
+      }
     }
 
     ::selection {
@@ -42,6 +58,7 @@ const resetStyles = `
 
     }
 
+
     @media ${device.mobile} {
       h1 {
         line-height: 1.25
@@ -51,26 +68,26 @@ const resetStyles = `
     h3 {
       font-weight: 500;
       color: ${theme.textMain};
-
+      margin-top: calc(0.5*${theme.gap});
+      margin-bottom: ${theme.gap};
     }
 
     h1 {
       font-size: 2.5rem;
     }
-
-    h3 {
-      margin-top: 12px;
-      margin-bottom: 12px;
-
+    h2 {
+      margin-top: calc(3*${theme.gap});
+      margin-bottom: 0;
     }
+
     p {
-      line-height: 1.75;
+      line-height: 1.95;
       padding: 0;
       margin: 0;
       color: ${theme.textMain};
     }
     
-    
+
     img {
       display: block;
       width: 100%;
@@ -81,15 +98,24 @@ const resetStyles = `
       color: white;
       font-size: 1.4em;
     }
-    ul, ol {
-      padding-left: 0;
-    }
+  
     ul ul, ul ol, ol ol, ol ul {
-      padding-left: 1.5em;
+      padding-left: 1rem;
     }
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+    
+    @media screen and (max-width: 450px) {
+      ul, ol {
+        padding-left: 0rem;
+      }
+    }
+
     ul li, ol li {
       margin-bottom: 0.75em;
       line-height: 1.6;
+      overflow-wrap: break-word;
     }
     @media all and (max-width: 1000px) {
       html, body {
@@ -100,50 +126,52 @@ const resetStyles = `
         margin-left: 1em;
       }
     }
-  `;
+  `
 
+export default class MyDocument extends Document {
+  // static getInitialProps({ renderPage }) {
+  //   const sheet = new ServerStyleSheet()
 
+  //   const page = renderPage((Component) => (props) =>
+  //     sheet.collectStyles(<Component {...props} />)
+  //   )
 
-
-  export default class MyDocument extends Document {
-    static getInitialProps({ renderPage }) {
-      const sheet = new ServerStyleSheet();
-  
-      const page = renderPage((Component) => (props) => sheet.collectStyles(<Component {...props} />));
-  
-      const styleElements = sheet.getStyleElement();
-      return { ...page, styleElements };
-    }
-
-
-
+  //   const styleElements = sheet.getStyleElement()
+  //   return { ...page, styleElements }
+  // }
   render() {
-
-    const { styleElements } = this.props;
+    // const { styleElements } = this.props
 
     return (
       <Html lang="en">
         <Head>
-        <link rel="icon" type="image/png" href="/favicon.ico" />
+          <link rel="icon" type="image/png" href="/favicon.ico" />
           {/* <link rel="manifest" href="/manifest.json" /> */}
           <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-          {/* <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /> */}
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, user-scalable=yes"
+          />
 
           <meta name="author" content="Zyhong Liu" />
 
-
-
           <style dangerouslySetInnerHTML={{ __html: resetStyles }} />
+          {/* {styleElements} */}
 
-          
-          <link rel="preconnect" href="https://fonts.gstatic.com"/>
-          <link href={`https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap`} rel="stylesheet"/>
-          {styleElements}
-
-          </Head>
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&display=swap"
+            rel="stylesheet"
+          ></link>
+        </Head>
         <body>
           <Main />
           <NextScript />
+          <script
+            async
+            data-uid="79342834f2"
+            src="https://prodigious-trailblazer-4135.ck.page/79342834f2/index.js"
+          ></script>
         </body>
       </Html>
     )

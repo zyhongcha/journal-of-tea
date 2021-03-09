@@ -14,8 +14,14 @@ const Wrapper = styled.div`
   justify-content: space-between;
 
   span {
-    padding: 0 8px;
     margin: auto 0;
+
+    &:first-of-type {
+      padding-right: 12px;
+    }
+    &:last-of-type {
+      padding-left: 12px;
+    }
   }
 `
 
@@ -24,8 +30,9 @@ const LinkWrapper = styled.div`
   align-self: center;
   margin: ${(props) => (props.right ? "0 0 0 auto" : "0 auto 0 0")};
   text-align: ${(props) => (props.right ? "right" : "left")};
+  line-height: 1.5;
   a {
-    font-weight: bold;
+    font-weight: 500;
     ${themeNavLinks(...[, ,], "1")}
   }
 

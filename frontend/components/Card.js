@@ -1,29 +1,28 @@
 import styled from 'styled-components'
-import Image from './Image'
 import Link from 'next/link'
 import { theme } from '../utils/theme-styles'
 import { device } from '../lib/media'
 import Categories from './Categories'
+import { serifFont } from "../utils/fonts"
+
 
 const Container = styled.article`
     flex: 0 1 calc(33.33% - 2*${theme.gap}); // used calc to consider the gaps, otherwise one row would show 2 cards instead of 3 because of overflow wrapping
     display: flex;
     flex-direction: column;
     border-radius: 3px;
-    border: 1px solid #dfdfdf;
+    border: 1px solid ${theme.bg};
+    background: #fff;
 
     @media ${device.mobile} {
         flex: 1 0 100%;
         margin: ${theme.gap} 0;
     }
-
 `
 
 const InnerWrapper = styled.div`
     padding: ${theme.gap};
-    background: ${theme.white};
-
-
+ 
 ` 
 
 const Excerpt = styled.p`
@@ -35,7 +34,7 @@ const ImgWrapper = styled.a`
     --aspect-ratio: 2;
 `
 
-const Img = styled(Image)`
+const Img = styled.img`
     height: 220px;
     object-fit: cover;
     cursor: pointer;
@@ -46,12 +45,12 @@ const Img = styled(Image)`
         transition: opacity 130ms ease-out;
     }
 
-    @media ${device.mobile} {
-    }
 
 `
 
 const InnerLink = styled.h3`
+    font-weight: 500;
+    font-family: ${serifFont};
     &:hover {
         text-decoration: underline;
     }
@@ -67,7 +66,7 @@ function Card ({ article }) {
         <Container>
         <Link href={`/article/${article.slug}`}>
         <ImgWrapper>
-        <Img imageObj={article.thumbnail}/>
+        <Img src={article.thumbnail.formats.small.url} decoding="async" loading="lazy" importance="low" width="369" />
         </ImgWrapper>
         </Link>
         <InnerWrapper>

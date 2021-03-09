@@ -6,23 +6,23 @@ import { device } from '../lib/media'
 import { theme } from '../utils/theme-styles'
 
 export const Layout = styled.div`
-    max-width: ${ theme.pageWidth };
+    /* max-width: ${ theme.pageWidth };
     margin: auto;
-    padding: 0  calc(4 * ${theme.gap}) calc(4 * ${theme.gap});
-
+    padding: 0  calc(4 * ${theme.gap}) calc(2 * ${theme.gap}) calc(4 * ${theme.gap}) ;
     @media (max-width: ${theme.pageWidth}) {
         padding: 0 calc(2* ${theme.gap}) calc(4 * ${theme.gap});
     }
 
     @media ${device.mobile} {
         padding: 0 0 calc(2 * ${theme.gap});
-    }
+    } 
+*/
 
 `
 
 export const Content = styled.main`
     box-sizing: border-box;
-    margin: auto;
+margin: auto auto calc(8*${theme.gap}) 0;
     transition-property: color, background-color;
     transition-duration: 200ms;
     transition-timing-function: ease-out;

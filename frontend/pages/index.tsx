@@ -7,7 +7,7 @@ import { theme, themeNavLinks} from "../utils/theme-styles"
 import styled from "styled-components"
 
 const GoToArchive = styled.div`
-margin: calc(6*${theme.gap}) 0 ;
+margin: calc(2*${theme.gap}) 0;
 text-align:right;
 a {
   font-weight: bold;

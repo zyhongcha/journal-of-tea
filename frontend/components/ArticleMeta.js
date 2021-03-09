@@ -1,16 +1,20 @@
 import styled from "styled-components"
 import Categories from './Categories'
 import { theme } from "../utils/theme-styles"
+import { sansSerifFont } from "../utils/fonts"
 
 
 const MetaWrapper = styled.div`
     text-align: center;
+    font-family: ${sansSerifFont};
+
     p {
       color: ${theme.textLighter}
     }
 
     h1 {
       margin: calc(2 * ${theme.gap}) 0;
+      line-height: 1.6;
     }
 `
 

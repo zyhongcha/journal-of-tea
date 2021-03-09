@@ -23,12 +23,20 @@ const Image = ({ imageObj, className, ...params }) => {
 
     return srcSet.join(', ')
   }
+  function buildSizes() {
+    // return `(min-width: 1600px) 1200px,
+    // (min-width: 1400px) 1100px,
+    // (min-width:1000px) 900px,
+    // 100vw`   
+    
+  }
 
 
   return (
     <img
       src={imageObj.url}
       srcSet={buildSrcSet()}
+      sizes={buildSizes()}
       alt={imageObj.alternativeText || imageObj.name}
       decoding="async"
       loading="lazy"

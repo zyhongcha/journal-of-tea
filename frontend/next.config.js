@@ -8,11 +8,12 @@ module.exports = {
   },
   images: {
     domains: [process.env.AMAZON_S3_IMAGES_DOMAIN],
-    imageSizes: [152, 500, 750, 1000],
+    imageSizes: [152, 500, 750, 1222],
   },
   typescript: {
     ignoreBuildErrors: true,
   },
+  trailingSlash: true,
   webpackDevMiddleware: config => {
     config.watchOptions = {
       poll: 1000,

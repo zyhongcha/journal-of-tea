@@ -1,5 +1,5 @@
 export function getStrapiURL(path) {
-  return "http://172.17.0.1:1337"+path || "http://localhost:1337"+path
+  return "http://192.168.178.9:1337"+path
 }
 
 // Helper to make GET requests to Strapi
