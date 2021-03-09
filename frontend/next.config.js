@@ -25,7 +25,7 @@ module.exports = {
     return [
       
       {
-        source: "/(article)",
+        source: "/article",
         destination: "/",
         permanent: true,
       },

@@ -1,6 +1,6 @@
 import Head from "next/head"
 import { fetchAPI } from "../../lib/api"
-// import { device } from "../../lib/media"
+import { device } from "../../lib/media"
 import ArticleMeta from "../../components/ArticleMeta"
 import styled from "styled-components"
 import Image from "../../components/Image"
@@ -15,8 +15,16 @@ const ArticleWrapper = styled.div`
   font-family: ${serifFont};
   line-height: 2.1;
   font-size: 1.2rem;
+  
+  @media ${device.mobile} {
+    p, li {
+      font-size: 1.09rem;
+    }
 
-
+    h2 {
+      line-height: 1.5;
+    }
+  }
 `
 const Content = styled.div`
   p {

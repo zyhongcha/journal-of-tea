@@ -10,6 +10,7 @@ const ArticleContainer = styled.div`
   /* margin: 0　calc(-1 * ${theme.gap}); // minus the initial gap */
   /* margin: 0 ${theme.gap}; */
   /* max-width: 1366px; // 1366px is the second most common device width in 2020 */
+
   @media ${device.mobile} {
     margin: auto;
   }
@@ -22,6 +23,7 @@ const Grid = styled.section`
   justify-content: flex-start;
 
   flex-wrap: wrap;
+
 
   @media ${device.mobile} {
     gap: 0;

@@ -14,6 +14,11 @@ const Container = styled.article`
     border: 1px solid ${theme.bg};
     background: #fff;
 
+    @media ${device.tablet} {
+        flex: 0 1 calc(50% - 2*${theme.gap});
+        margin: ${theme.gap} 0;
+    }
+
     @media ${device.mobile} {
         flex: 1 0 100%;
         margin: ${theme.gap} 0;
