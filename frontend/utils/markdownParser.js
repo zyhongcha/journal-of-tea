@@ -2,6 +2,9 @@ import { theme } from "./theme-styles"
 
 
 export const md = require("markdown-it")({
+
+  html:true,
+  typographer: true,
     modifyToken: function (token, env) {
       switch (token.type) {
         case "image":
@@ -10,6 +13,8 @@ export const md = require("markdown-it")({
           let imgSrcPath = token.attrObj.src.split(
             process.env.AMAZON_S3_IMAGES_URI
           )
+          let fileExtension = imgSrcPath[1].split('.')[1]
+          if (!fileExtension.includes("jpg", "jpeg")) break
           let imgSrcSet = {
             small: `small_${imgSrcPath[1]}`,
             medium: `medium_${imgSrcPath[1]}`,

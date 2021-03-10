@@ -32,7 +32,7 @@ const InnerWrapper = styled.div`
 
 const Excerpt = styled.p`
     color: ${theme.textMain};
-    font-size: 0.9em;
+    font-size: 0.97rem;
 `
 
 const ImgWrapper = styled.a`

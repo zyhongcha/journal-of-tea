@@ -35,7 +35,7 @@ module.exports = {
     return [
       
       {
-        source: "/articles",
+        source: "/(articles)/",
         destination: "/",
       },
     ]

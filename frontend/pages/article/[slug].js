@@ -29,6 +29,14 @@ const ArticleWrapper = styled.div`
 const Content = styled.div`
   p {
     padding-top: calc(1.25 *${theme.gap});
+    img {
+      margin: auto;
+    }
+  }
+  
+  video {
+    margin: auto;
+    max-width: 100%;
   }
   h3 {
     margin-top: calc(2.5 * ${theme.gap});
