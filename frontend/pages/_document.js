@@ -145,7 +145,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link rel="icon" type="image/png" href="/favicon.ico" />
           {/* <link rel="manifest" href="/manifest.json" /> */}
           <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
       
