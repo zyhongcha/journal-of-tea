@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
     <Head>
-    <meta charset="UTF-8" />
+    <meta charSet="UTF-8" />
     <meta name="description" content="Discover and share your tea articles and stories around the world"></meta>
     <meta
             name="viewport"
