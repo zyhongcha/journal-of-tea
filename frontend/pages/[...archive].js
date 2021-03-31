@@ -49,7 +49,7 @@ const Archive = ({ archive, page, archiveSlug }) => {
         <span>&lang;</span>
         <LinkWrapper>
           <Link href="/">
-            <a>back to homepage</a>
+            <a>go back</a>
           </Link>
         </LinkWrapper>
       </Container>
