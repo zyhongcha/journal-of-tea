@@ -1,12 +1,9 @@
 import { fetchAPI } from "../lib/api"
 import Articles from "../components/Articles"
 import Pagination from "../components/Pagination"
-import { useRouter } from "next/router"
-import { useEffect } from "react"
 import styled from "styled-components"
 import Link from "next/link"
 import { theme, themeNavLinks } from "../utils/theme-styles"
-import { device } from "../lib/media"
 
 const Title = styled.h1`
   font-size: 1.9rem;
@@ -96,7 +93,6 @@ export const getStaticProps = async ({ params }) => {
   const articles = await fetchAPI(
     `/articles?${additionalQueries}&_sort=published:desc`
   )
-    console.log(pageIndex)
   return {
     props: {
       archive: articles,
