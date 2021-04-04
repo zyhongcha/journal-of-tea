@@ -48,8 +48,9 @@ cursor: pointer;
 export const Title = styled.h1`
   font-family: ${serifFont};
   font-weight: 400;
-  font-size: 1.6rem;
+  font-size: 1.75rem;
   margin: 0;
+  color: #555;
   letter-spacing: -0.02em;
   line-height: 1.3;
   ${themeTitle};
@@ -106,7 +107,7 @@ const Header = ({ props }) => {
     <HeaderElement isArticle={router.pathname.startsWith("/article/")}>
       <Link href="/">
         <TitleLink>
-          <Title><span>Zyhong's</span><br/> Journal of Tea</Title>
+          <Title><span>Journal</span> of Tea</Title>
         </TitleLink>
       </Link>
       <MenuElements>
