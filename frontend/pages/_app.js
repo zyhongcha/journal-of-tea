@@ -15,7 +15,12 @@ function MyApp({ Component, pageProps }) {
           />
 
     <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Journal of Tea" key="ogtitle" />
+    <meta property="og:description" content="Discover and share your tea articles and stories around the world" key="ogdesc" />
+    <meta property="og:url" content="www.journaloftea.org" key="ogurl" />
+    <meta property="og:site_name" content="Journal of Tea" key="ogsitename" />
     <link rel="canonical" href="https://www.journaloftea.org/" />
+    <title>Journal of Tea</title>
     </Head>
     <Layout>
     <Header />
